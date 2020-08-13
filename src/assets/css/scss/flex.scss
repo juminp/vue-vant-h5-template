@@ -1,0 +1,101 @@
+.f-flex-box {
+  display: flex;
+
+  &.flex-inline {
+    display: inline-flex;
+  }
+
+  // direction
+  // 默认是 row
+  &.dir-row-reverse {
+    flex-direction: row-reverse;
+  }
+  &.dir-col {
+    flex-direction: column;
+  }
+  &.dir-col-reverse {
+    flex-direction: column-reverse;
+  }
+
+  // wrap
+  // 默认是 no-wrap
+  &.wrap {
+    flex-wrap: wrap;
+  }
+  &.wrap-reverse {
+    flex-wrap: wrap-reverse;
+  }
+
+  // cross-axis;
+  // 默认是 stretch
+  &.align-start {
+    align-items: flex-start;
+  }
+  &.align-center {
+    align-items: center;
+  }
+  &.align-end {
+    align-items: flex-end;
+  }
+
+  // 默认是stretch
+  &.align-ctn-start {
+    align-content: flex-start;
+  }
+  &.align-ctn-center {
+    align-content: center;
+  }
+  &.align-ctn-end {
+    align-content: flex-end;
+  }
+  &.align-ctn-between {
+    align-content: space-between;
+  }
+  &.align-ctn-around {
+    align-content: space-around;
+  }
+  &.align-ctn-evenly {
+    align-content: space-evenly;
+  }
+
+  // main-axis
+  &.justify-center {
+    justify-content: center;
+  }
+  &.justify-between {
+    justify-content: space-between;
+  }
+  &.justify-around {
+    justify-content: space-around;
+  }
+  &.justify-evenly {
+    justify-content: space-evenly;
+  }
+  &.justify-end {
+    justify-content: flex-end;
+  }
+
+  & > .flex-item {
+    flex: 1;
+    // 默认情况下，flex项目收缩后不会低于其最小内容尺寸, 如果不设置，当缩小到最小时就不会再缩小了，如input
+    min-width: 0;
+  }
+  & > .align-start {
+    align-self: flex-start;
+  }
+  & > .align-center {
+    align-self: center;
+  }
+  & > .align-end {
+    align-self: flex-end;
+  }
+  & > .align-stretch {
+    align-self: stretch;
+  }
+  & > .align-baseline {
+    align-self: baseline;
+  }
+  & > .no-shrink {
+    flex-shrink: 0;
+  }
+}

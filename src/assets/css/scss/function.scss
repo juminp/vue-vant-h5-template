@@ -1,0 +1,126 @@
+// 功能性css
+
+// 禁止选择文字
+// .z-noSelect {
+//   user-select: none;
+// }
+
+// 字体对齐
+.f-text-center {
+  text-align: center;
+}
+.f-text-left {
+  text-align: left;
+}
+.f-text-right {
+  text-align: right;
+}
+
+// 块级转换
+.f-block {
+  display: block;
+}
+.f-inline-block {
+  display: inline-block;
+}
+.f-inline {
+  display: inline;
+}
+
+// 浮动
+.f-cl:after,
+.f-cl:before {
+  display: table;
+  content: "";
+}
+.f-cl:after {
+  clear: both;
+}
+.f-fl {
+  float: left;
+}
+.f-fr {
+  float: right;
+}
+
+// 省略
+.f-clamp1 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.f-clamp2 {
+  -webkit-line-clamp: 2;
+}
+.f-clamp3 {
+  -webkit-line-clamp: 3;
+}
+.f-clamp4 {
+  -webkit-line-clamp: 4;
+}
+.f-clamp2,
+.f-clamp3,
+.f-clamp4 {
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  line-break: loose; // html标签上务必加上 lang="zh-cn"属性，否则部分情况会有bug，如这种情况： <p class="f-clamp2">那个他，期待你的出现！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！</p>
+  overflow: hidden;
+}
+
+.f-full {
+  width: 100%;
+  height: 100%;
+}
+
+.f-full-width {
+  width: 100%;
+}
+
+.f-full-height {
+  height: 100%;
+}
+
+.f-position-relative {
+  position: relative;
+}
+
+.f-position-absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+// .f-body-unscroll {
+//     overflow: hidden;
+//     height: 100%;
+// }
+
+.f-over-hidden {
+  overflow: hidden;
+}
+
+.f-white-nowrap {
+  white-space: nowrap;
+}
+
+.f-word-break-word {
+  word-wrap: break-word;
+}
+
+.f-word-break-all {
+  word-break: break-all;
+}
+
+.f-mgt-30 {
+  margin-top: 30px;
+}
+
+.f-mgb-20 {
+  margin-bottom: 20px;
+}
+
+.f-mgb-10 {
+  margin-bottom: 10px;
+}
