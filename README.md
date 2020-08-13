@@ -10,7 +10,7 @@
 </p>
 
 ## Preview
-See [Preview](https://juminp.github.io/vue-vant-h5-template/dist/index.html)
+See [Preview in phone mode](https://juminp.github.io/vue-vant-h5-template/dist/index.html)
 
 ## Node.js 
 Download [Node](https://nodejs.org/en/download/).
