@@ -4,8 +4,8 @@
 Download [Node](https://nodejs.org/en/download/).
 
 ## Vant UI
-See [Vant](https://youzan.github.io/vant/) OR
-    [Vant](https://vant-contrib.gitee.io/vant/).
+See [Vant Github](https://youzan.github.io/vant/) or
+    [Vant Gitee](https://vant-contrib.gitee.io/vant/).
 
 
 ## Project setup
