@@ -1,7 +1,5 @@
-
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
 
 const Main = () => import('../views/main/index.vue')
 const Home = () => import('../views/main/home/index.vue')
@@ -69,9 +67,9 @@ const router = new VueRouter({
         },
         {
           path: '',
-          redirect: 'home'
+          redirect: 'home',
         },
-      ]
+      ],
     },
     {
       path: '/login',

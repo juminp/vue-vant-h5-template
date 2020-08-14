@@ -1,43 +1,59 @@
 <template>
   <div class="login">
     <NavBar
-      title="登录"
-      left-text=""
-      :left-arrow="false"
       :default-left="false"
-      right-text=""></NavBar>
+      :left-arrow="false"
+      left-text
+      right-text
+      title="登录"
+    ></NavBar>
     <div class="login-con">
       <div class="welcome">Welcome</div>
       <div class="login-form">
         <div class="login-input">
           <van-field
-            v-model="userInfo.phone"
-            type="tel"
+            class="login-input-tel"
             clearable
             placeholder="手机号"
-            class="login-input-tel"
+            type="tel"
+            v-model="userInfo.phone"
           />
         </div>
         <div class="login-input">
           <van-field
-            v-model="userInfo.code"
+            @keyup.enter.native="onSubmit"
             clearable
             placeholder="验证码"
-            @keyup.enter.native="onSubmit"
+            v-model="userInfo.code"
           >
             <template #button>
-              <van-button plain round size="small" color="#ff4e22">获取验证码</van-button>
+              <van-button
+                color="#ff4e22"
+                plain
+                round
+                size="small"
+              >获取验证码</van-button>
             </template>
           </van-field>
         </div>
         <div>
-          <van-button class="login-btn" round block native-type="submit" @click="onSubmit">登录</van-button>
+          <van-button
+            @click="onSubmit"
+            block
+            class="login-btn"
+            native-type="submit"
+            round
+          >登录</van-button>
         </div>
       </div>
-      <van-divider :style="{ color: '#999999', borderColor: '#999999', padding: '0 16px' }">其他方式登录</van-divider>
+      <van-divider :style="dividerStyle">其他方式登录</van-divider>
       <div class="f-flex-box justify-center f-text-center">
         <div class="logo-box">
-          <img class="logo-img" src="../../assets/images/wechat.png" alt="">
+          <img
+            alt
+            class="logo-img"
+            src="../../assets/images/wechat.png"
+          />
           <p class="logo-txt">微信登录</p>
         </div>
       </div>
@@ -46,9 +62,9 @@
 </template>
 
 <script>
-import { httpRequest } from '@/lib/httpHelper'
-import { Field, Button, Divider } from 'vant';
 import NavBar from '@/components/NavBar.vue'
+import { httpRequest } from '@/lib/httpHelper'
+import { Button, Divider, Field } from 'vant'
 // @ is an alias to /src
 export default {
   name: 'Login',
@@ -60,12 +76,17 @@ export default {
   },
   data() {
     return {
+      dividerStyle: {
+        color: '#999999',
+        borderColor: '#999999',
+        padding: '0 16px',
+      },
       userInfo: {
         phone: '',
         code: '',
       },
-      redirect: undefined
-    };
+      redirect: undefined,
+    }
   },
   computed: {},
   watch: {
@@ -73,22 +94,24 @@ export default {
       handler: function(route) {
         this.redirect = route.query && route.query.redirect
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   created() {},
   methods: {
     onSubmit() {
-      console.log('submit', this.userInfo);
-      let { phone, code } = this.userInfo
+      console.log('submit', this.userInfo)
+      const { phone, code } = this.userInfo
       if (phone && code) {
-        this.$store.dispatch('user/login', this.userInfo).then(() => {
-          this.$router.push({ path: this.redirect || '/' })
-        }).catch(() => {
-        })
+        this.$store
+          .dispatch('user/login', this.userInfo)
+          .then(() => {
+            this.$router.push({ path: this.redirect || '/' })
+          })
+          .catch(() => {})
       }
     },
-  } 
+  },
 }
 </script>
 
@@ -118,7 +141,7 @@ export default {
   .login-btn {
     margin: 60px auto;
     color: white;
-    background: linear-gradient(left, #ff9000 , #ff4e22) no-repeat;
+    background: linear-gradient(left, #ff9000, #ff4e22) no-repeat;
   }
   .logo-box {
     text-align: center;

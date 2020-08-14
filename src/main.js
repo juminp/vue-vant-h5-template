@@ -1,20 +1,22 @@
-import './registerServiceWorker'
+import 'vant/lib/index.css'
+import '@/permission' // permission control
 
-import { Dialog, Loading, Toast, Notify, ImagePreview, Lazyload  } from 'vant'
+import './registerServiceWorker'
+import './assets/css/scss/reset.scss'
+import './assets/css/scss/flex.scss'
+import './assets/css/scss/function.scss'
+
+import { Dialog, ImagePreview, Lazyload, Loading, Notify, Toast } from 'vant'
 import Vconsole from 'vconsole'
 import Vue from 'vue'
-import 'vant/lib/index.css';
-import './assets/css/scss/reset.scss'
-import './assets/css/scss/flex.scss'
-import './assets/css/scss/function.scss'
-// import './assets/css/icon/iconfont.css'
 
 import App from './App.vue'
 import * as filters from './filters'
 import plugins from './plugins'
 import router from './router/index'
 import store from './store/index'
-import '@/permission' // permission control
+
+// import './assets/css/icon/iconfont.css'
 
 if (process.env.NODE_ENV !== 'production') {
   // new Vconsole()
@@ -39,7 +41,7 @@ Vue.use(Lazyload)
 Vue.config.productionTip = false
 
 //全局返回事件，由于微信的机制，页面刷新会导致没有前一页，所以特殊处理
-Vue.prototype.routerBack = function (){
+Vue.prototype.routerBack = function() {
   // router.go(-1);
   window.history.go(-1)
   console.log('routerBack')

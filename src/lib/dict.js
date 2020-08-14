@@ -3,7 +3,7 @@ const filter = obj => {
   for (const attr in obj) {
     _arr.push({
       name: obj[attr],
-      value: attr
+      value: attr,
     })
   }
   return _arr

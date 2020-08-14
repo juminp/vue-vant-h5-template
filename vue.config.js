@@ -41,9 +41,9 @@ module.exports = {
   configureWebpack: webpackConfig => {
     webpackConfig.plugins.push(
       new webpack.DefinePlugin({
-        currentEnv: JSON.stringify(process.env.CURREN_ENV)
+        currentEnv: JSON.stringify(process.env.CURREN_ENV),
         // deviceType: JSON.stringify(deviceType)
-      })
+      }),
     )
   },
   // 配置 webpack-dev-server 行为。

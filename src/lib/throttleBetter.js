@@ -1,10 +1,16 @@
 // 节流阀
-export const throttleBetter = function(delay, cb, opt = {
-  isDebounce: false,
-  isExecNow: false
-}) {
+export const throttleBetter = function(
+  delay,
+  cb,
+  opt = {
+    isDebounce: false,
+    isExecNow: false,
+  },
+) {
   // 定义定时器，上一次执行函数的时间
-  let timer, lastExecTime = 0, canceled = false
+  let timer,
+    lastExecTime = 0,
+    canceled = false
 
   // 如果要先执行一次回调
   if (opt.isExecNow) {
@@ -12,13 +18,23 @@ export const throttleBetter = function(delay, cb, opt = {
     opt.isExecNow = false
   }
 
+  function clear() {
+    clearTimeout(timer)
+  }
+
+  function cancel() {
+    clear()
+    timer = undefined
+    canceled = true
+  }
+
   function wrapper() {
     if (canceled) {
-        return
+      return
     }
 
-    let self = this
-    let args = arguments || []
+    const self = this
+    const args = arguments || []
     const pastTime = Date.now() - lastExecTime
 
     function exec() {
@@ -42,16 +58,6 @@ export const throttleBetter = function(delay, cb, opt = {
     } else {
       timer = setTimeout(exec, delay - pastTime)
     }
-  }
-
-  function clear() {
-    clearTimeout(timer)
-  }
-
-  function cancel() {
-    clear()
-    timer = undefined
-    canceled = true
   }
 
   wrapper.cancel = cancel

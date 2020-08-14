@@ -1,10 +1,11 @@
+import { getToken } from '@/utils/auth' // get token from cookie
+
 import router from './router'
 import store from './store'
-import { getToken } from '@/utils/auth' // get token from cookie
 
 const whiteList = ['/login'] // no redirect whitelist
 
-router.beforeEach(async(to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   // determine whether the user has logged in
   const hasToken = getToken()
 
@@ -41,4 +42,3 @@ router.beforeEach(async(to, from, next) => {
     }
   }
 })
-

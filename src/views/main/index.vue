@@ -1,26 +1,28 @@
 <template>
   <section>
     <keep-alive>
-        <router-view v-if="$route.meta && $route.meta.keepAlive"></router-view>
+      <router-view v-if="$route.meta && $route.meta.keepAlive"></router-view>
     </keep-alive>
     <router-view v-if="!$route.meta || !$route.meta.keepAlive"></router-view>
     <div class="tabbar-placeholder"></div>
     <van-tabbar
       @change="changeTab"
-      v-model="active"
       active-color="#ff4e22"
-      inactive-color="#999999">
+      inactive-color="#999999"
+      v-model="active"
+    >
       <van-tabbar-item
-        v-for="(item, index) in tabs"
+        :icon="item.icon"
         :key="index"
-        :icon="item.icon">{{ item.txt }}</van-tabbar-item>
+        v-for="(item, index) in tabs"
+      >{{ item.txt }}</van-tabbar-item>
     </van-tabbar>
   </section>
 </template>
 
 <script>
 import { httpRequest } from '@/lib/httpHelper'
-import { Tabbar, TabbarItem } from 'vant';
+import { Tabbar, TabbarItem } from 'vant'
 // @ is an alias to /src
 export default {
   name: 'Main',
@@ -57,19 +59,19 @@ export default {
           txt: '我的',
           path: '/user',
         },
-      ]
-    };
+      ],
+    }
   },
   watch: {
-    $route(newVal,oldVal) {
+    $route(newVal, oldVal) {
       // console.log(newVal,oldVal);
       this.initActive()
-    }
+    },
   },
   created() {
     this.initActive()
   },
-  methods :{
+  methods: {
     initActive() {
       this.tabs.forEach((item, index) => {
         if (item.path === this.$route.path) {
@@ -82,7 +84,7 @@ export default {
         path: this.tabs[e].path,
       })
     },
-  } 
+  },
 }
 </script>
 
@@ -91,7 +93,7 @@ export default {
   width: 100%;
   height: 120px;
 }
-.van-tabbar-item__icon i{
+.van-tabbar-item__icon i {
   font-size: 42px;
 }
 </style>

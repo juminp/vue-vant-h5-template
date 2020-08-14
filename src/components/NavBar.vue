@@ -1,17 +1,18 @@
 <template>
   <section class="my-nav-bar">
     <van-nav-bar
-      placeholder 
       :fixed="fixed"
-      :title="title"
       :left-arrow="leftArrow"
       :left-text="leftText"
+      :title="title"
       @click-left="onClickLeft"
       @click-right="onClickRight"
+      placeholder
     >
-      <template 
+      <template
         #right
-        v-if="rightText">
+        v-if="rightText"
+      >
         <span>{{ rightText }}</span>
       </template>
     </van-nav-bar>
@@ -19,7 +20,7 @@
 </template>
 
 <script>
-import { NavBar  } from 'vant'
+import { NavBar } from 'vant'
 export default {
   name: 'NavBar',
   components: {
@@ -49,25 +50,24 @@ export default {
     fixed: {
       type: Boolean,
       default: true,
-    }
+    },
   },
   data() {
-    return {
-    }
+    return {}
   },
   methods: {
     onClickLeft() {
       console.log('返回')
       if (this.defaultLeft) {
         console.log('defaultLeft')
-        this.routerBack();
+        this.routerBack()
       } else if (this.leftText) {
-        this.$emit("click-left-btn")
+        this.$emit('click-left-btn')
       }
     },
     onClickRight() {
       if (this.rightText) {
-        this.$emit("click-right-btn")        
+        this.$emit('click-right-btn')
       }
     },
   },
@@ -82,7 +82,9 @@ export default {
   .van-nav-bar {
     background-color: #ff4e22;
     color: white;
-    .van-nav-bar__title, .van-nav-bar__text, .van-icon {
+    .van-nav-bar__title,
+    .van-nav-bar__text,
+    .van-icon {
       color: white;
     }
   }

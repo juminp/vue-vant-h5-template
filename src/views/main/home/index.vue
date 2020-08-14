@@ -1,20 +1,37 @@
 <template>
   <div class="home">
     <NavBar
-      title=""
-      left-text="LOGO"
-      :left-arrow="false"
       :default-left="false"
-      right-text=""></NavBar>
-    <van-pull-refresh v-model="refreshing" @refresh="onRefresh" success-text="刷新成功">
+      :left-arrow="false"
+      left-text="LOGO"
+      right-text
+      title
+    ></NavBar>
+    <van-pull-refresh
+      @refresh="onRefresh"
+      success-text="刷新成功"
+      v-model="refreshing"
+    >
       <div class="home-top">
-        <van-swipe class="home-top-swipe" :autoplay="2000" @change="onChangeSwipe" height="150">
-          <van-swipe-item v-for="(image, index) in swipeImages" :key="index">
+        <van-swipe
+          :autoplay="2000"
+          @change="onChangeSwipe"
+          class="home-top-swipe"
+          height="150"
+        >
+          <van-swipe-item
+            :key="index"
+            v-for="(image, index) in swipeImages"
+          >
             <img v-lazy="image" />
           </van-swipe-item>
           <template #indicator>
             <div class="custom-indicators">
-              <i :class="['custom-indicator', index === currentSwipe ? 'custom-indicator-active' : '']" v-for="(image, index) in swipeImages" :key="index"></i>
+              <i
+                :class="['custom-indicator', index === currentSwipe ? 'custom-indicator-active' : '']"
+                :key="index"
+                v-for="(image, index) in swipeImages"
+              ></i>
             </div>
           </template>
         </van-swipe>
@@ -24,9 +41,9 @@
 </template>
 
 <script>
+import NavBar from '@/components/NavBar.vue'
 import { httpRequest } from '@/lib/httpHelper'
 import { PullRefresh, Swipe, SwipeItem } from 'vant'
-import NavBar from '@/components/NavBar.vue'
 // @ is an alias to /src
 export default {
   name: 'Home',
@@ -44,27 +61,26 @@ export default {
         'https://oss.suning.com/adpp/creative_kit/material/picture/20200805-46d495a2efbd49eca102fc9f82d7493ad19add64db2f47a4.jpg?format=_is_1242w_610h',
         'https://image2.suning.cn/uimg/cms/img/159663394535266820.jpg?format=_is_1242w_610h',
         'https://image3.suning.cn/uimg/cms/img/159654336317786686.jpg?format=_is_1242w_610h',
-        
       ],
-    };
+    }
   },
   computed: {},
   created() {
-    console.log('created');
+    console.log('created')
   },
   methods: {
     onRefresh() {
-      this.initData();
+      this.initData()
     },
     initData() {
-      setTimeout(()=>{
-        this.refreshing = false;
+      setTimeout(() => {
+        this.refreshing = false
       }, 500)
     },
     onChangeSwipe(index) {
-      this.currentSwipe = index;
-    }
-  } 
+      this.currentSwipe = index
+    },
+  },
 }
 </script>
 
@@ -72,7 +88,7 @@ export default {
 .home-top {
   padding: 20px 30px 50px;
   color: white;
-  background: linear-gradient(bottom, #f4f4f4 , #ff4e22) no-repeat;
+  background: linear-gradient(bottom, #f4f4f4, #ff4e22) no-repeat;
   &-swipe {
     height: 260px;
     border-radius: 20px;

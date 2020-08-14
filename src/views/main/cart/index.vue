@@ -1,31 +1,39 @@
 <template>
   <div class="cart">
     <NavBar
-      title="购物车"
-      left-text=""
-      :left-arrow="false"
       :default-left="false"
-      right-text=""></NavBar>
-    <van-pull-refresh v-model="refreshing" @refresh="onRefresh" success-text="刷新成功">
+      :left-arrow="false"
+      left-text
+      right-text
+      title="购物车"
+    ></NavBar>
+    <van-pull-refresh
+      @refresh="onRefresh"
+      success-text="刷新成功"
+      v-model="refreshing"
+    >
       <van-list
-        v-model="loading"
         :finished="finished"
         :finished-text="list.length ? '没有更多了' : ''"
         @load="onLoad"
-      >
-        
-      </van-list>
+        v-model="loading"
+      ></van-list>
       <van-empty description="空空如是也">
-        <van-button round color="#ff4e22" class="empty-button" @click="toShoping">去看看</van-button>
+        <van-button
+          @click="toShoping"
+          class="empty-button"
+          color="#ff4e22"
+          round
+        >去看看</van-button>
       </van-empty>
     </van-pull-refresh>
   </div>
 </template>
 
 <script>
-import { httpRequest } from '@/lib/httpHelper'
-import { PullRefresh, List, Empty, Button } from 'vant'
 import NavBar from '@/components/NavBar.vue'
+import { httpRequest } from '@/lib/httpHelper'
+import { Button, Empty, List, PullRefresh } from 'vant'
 // @ is an alias to /src
 export default {
   name: 'Cart',
@@ -42,14 +50,14 @@ export default {
       finished: false,
       refreshing: false,
       list: [],
-    };
+    }
   },
   created() {
-    console.log('created');
+    console.log('created')
   },
   methods: {
     onRefresh() {
-      this.finished = false;
+      this.finished = false
       this.initData()
     },
     onLoad() {
@@ -57,17 +65,17 @@ export default {
     },
     initData() {
       if (!this.finished) {
-        setTimeout(()=>{
-          this.refreshing = false;
-          this.finished = true;
-          this.loading = false;
+        setTimeout(() => {
+          this.refreshing = false
+          this.finished = true
+          this.loading = false
         }, 500)
       }
     },
     toShoping() {
       this.$router.push({ path: '/classify' })
-    }
-  } 
+    },
+  },
 }
 </script>
 
